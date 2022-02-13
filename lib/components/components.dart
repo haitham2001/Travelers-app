@@ -1,4 +1,3 @@
-import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 Widget buildArticleItem(article, context) =>
@@ -91,18 +90,18 @@ Widget myDivider() =>
       color: Colors.grey,
     );
 
-Widget articleBuilder(list, context) =>
-    ConditionalBuilder(
-      condition: list.length > 0,
-      builder: (context) =>
-          ListView.separated(
-            physics: BouncingScrollPhysics(),
-            itemBuilder: (context, index) =>
-                buildArticleItem(list[index], context),
-            separatorBuilder: (context, index) => myDivider(),
-            itemCount: 10,),
-      fallback: (context) => Center(child: CircularProgressIndicator()),
-    );
+// Widget articleBuilder(list, context) =>
+//     ConditionalBuilder(
+//       condition: list.length > 0,
+//       builder: (context) =>
+//           ListView.separated(
+//             physics: BouncingScrollPhysics(),
+//             itemBuilder: (context, index) =>
+//                 buildArticleItem(list[index], context),
+//             separatorBuilder: (context, index) => myDivider(),
+//             itemCount: 10,),
+//       fallback: (context) => Center(child: CircularProgressIndicator()),
+//     );
 
 
 void navigateTo(context, widget) =>

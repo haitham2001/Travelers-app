@@ -15,6 +15,7 @@ ThemeData DarkMode =ThemeData
     iconTheme: IconThemeData(
       color: Colors.white,
     ),
+
     titleTextStyle: TextStyle(
       color: Colors.white,
       fontSize: 20.0,
@@ -27,34 +28,39 @@ ThemeData DarkMode =ThemeData
   ),
 
   textTheme: TextTheme(
+    // subtitle1: TextStyle(
+    //   color: Colors.white,
+    // ),
     // For Headers
     bodyText1: TextStyle(
       fontSize: 35.0,
       fontWeight: FontWeight.bold,
-      color: Colors.white,
+      color: Colors.black,
     ),
     bodyText2: TextStyle(
       fontSize: 15,
-      color: Colors.grey,
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
     ),
   ),
 
 );
 ThemeData LightMode =ThemeData(
   textTheme: TextTheme(
-    bodyText1: TextStyle(
+    bodyText1: const TextStyle(
       fontSize: 35.0,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
     bodyText2: TextStyle(
       fontSize: 15,
-      color: Colors.grey[600],
+      color: Colors.white,
+      fontWeight: FontWeight.bold
     ),
   ),
   primarySwatch: defaultColor,
   scaffoldBackgroundColor: Colors.white,
-  appBarTheme: AppBarTheme(
+  appBarTheme: const AppBarTheme(
     titleSpacing: 20.0,
     backgroundColor: defaultColor,
     elevation: 10.0,

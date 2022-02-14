@@ -8,6 +8,7 @@ import 'package:travellers/components/components.dart';
 import 'package:travellers/modules/cubit/cubit.dart';
 import 'package:travellers/modules/cubit/states.dart';
 import 'package:travellers/modules/cubit/theme_cubit.dart';
+import 'package:travellers/modules/home_page.dart';
 import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/styles/colors.dart';
 
@@ -43,8 +44,13 @@ class Profile extends StatelessWidget {
                 ),
                 PopupMenuItem<int>(
                     value: 1,
-                    child: Text("About Us",style:
-                    TextStyle(color: Colors.white))
+                    child: Row(
+                      children: [
+                        Icon(Icons.group_outlined,color:Colors.white),
+                        Text("About Us",style:
+                        TextStyle(color: Colors.white)),
+                      ],
+                    )
                 ),
                 PopupMenuDivider(),
                 PopupMenuItem<int>(
@@ -150,13 +156,13 @@ class Profile extends StatelessWidget {
   SelectedItem(BuildContext context, item) {
     switch(item){
       case 0:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Profile()));
+        NavigateTo(context, HomePage());
         break;
       case 1:
         print("About Us Clicked");
         break;
       case 2:
-        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>LoginScreen()),(route)=>false);
+        NavigateAndFinish(context, LoginScreen());
         break;
     }
   }

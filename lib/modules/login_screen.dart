@@ -7,6 +7,7 @@ import 'package:travellers/constants/constants.dart';
 import 'package:travellers/modules/cubit/cubit.dart';
 import 'package:travellers/modules/cubit/states.dart';
 import 'package:travellers/modules/cubit/theme_cubit.dart';
+import 'package:travellers/modules/home_page.dart';
 import 'package:travellers/modules/pick_destination.dart';
 import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/providers/pass_provider.dart';
@@ -158,7 +159,8 @@ class LoginScreen extends StatelessWidget {
                               }
                               if (success) {
                                 Fluttertoast.showToast(msg: 'Login Success');
-                                Navigator.of(context).push(MaterialPageRoute(builder:(_)=> PickDestination()));
+                                //Navigator.of(context).push(MaterialPageRoute(builder:(_)=> PickDestination()));
+                                NavigateAndFinish(context, HomePage());
                               } else {
                                 Fluttertoast.showToast(
                                     msg: 'Invalid Email or Password');

@@ -163,7 +163,7 @@ class LoginScreen extends StatelessWidget {
 
                                 if (success) {
                                   Fluttertoast.showToast(msg: 'Login Success');
-                                  navigateTo(context, const HomeScreen());
+                                  NavigateAndFinish(context, const HomeScreen());
                                 } else {
                                   Fluttertoast.showToast(
                                       msg: 'Invalid Email or Password');

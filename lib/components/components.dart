@@ -63,6 +63,9 @@ void NavigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
 // }
 
 Widget defaultBtn({
+  double left_margin_icon=10,
+  double right_margin_icon=10,
+  double right_margin_text=20,
   double width = 280,
   Color backgroundcolor = defaultColor,
   bool isUpperCase = true,
@@ -80,7 +83,7 @@ Widget defaultBtn({
     ),
     child: TextButton.icon(
       icon: Container(
-        margin: EdgeInsets.only(right: 16),
+        margin: EdgeInsets.only(right: right_margin_icon,left: left_margin_icon),
         child: Icon(
           icon,
           color: Colors.white,
@@ -89,7 +92,7 @@ Widget defaultBtn({
       ),
       onPressed: function,
       label: Container(
-        margin: EdgeInsets.only(right: 35),
+        margin: EdgeInsets.only(right: right_margin_text,left: left_margin_icon),
         child: Text(
           isUpperCase ? txt.toUpperCase() : txt,
           style:  TextStyle(

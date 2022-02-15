@@ -8,6 +8,8 @@ import 'package:travellers/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:travellers/styles/colors.dart';
 
+import 'cubit/about_us.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -29,6 +31,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Theme(
+
             data: Theme.of(context).copyWith(
               iconTheme: const IconThemeData(color: Colors.white),
               dividerColor: Colors.white,
@@ -100,35 +103,43 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     defaultBtn(
-                        txt: 'Tickets',
-                        // fontSize: 15,
+                        txt: 'Your Tickets',
                         function: () {},
                         icon: Icons.receipt),
                     const SizedBox(
                       height: 45,
                     ),
                     defaultBtn(
+                        right_margin_icon: 10,
+                        right_margin_text: 100,
                         txt: 'Plane',
                         function: ()
                         {
-
+                           navigateTo(context,PickDestination());
                         },
                         icon: Icons.airplanemode_active_outlined),
                     const SizedBox(
                       height: 45,
                     ),
                     defaultBtn(
+                        right_margin_icon: 5,
+                        right_margin_text: 127,
                         txt: 'Bus',
                         function: ()
                         {
-
+                          navigateTo(context,PickDestination());
                         },
                         icon: Icons.directions_bus),
                     const SizedBox(
                       height: 45,
                     ),
                     defaultBtn(
-                        txt: 'Train', function: () {}, icon: Icons.train),
+                        left_margin_icon: 14,
+                        right_margin_icon: 5,
+                        right_margin_text: 105,
+                        txt: 'Train', function: () {
+                      navigateTo(context,PickDestination());
+                    }, icon: Icons.train),
                   ],
                 ),
               ),
@@ -147,7 +158,7 @@ class HomeScreen extends StatelessWidget {
         break;
       case 1:
         //Will go to The History Page
-        navigateTo(context, PickDestination()); //Only for testing
+        navigateTo(context, About()); //Only for testing
         break;
       case 2:
         //Return to login page and delete the stack of pages

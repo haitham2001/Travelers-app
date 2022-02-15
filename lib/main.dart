@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:travellers/TicketDatabase/TicketDataBase.dart';
 import 'package:travellers/modules/home_screen.dart';
 import 'package:travellers/modules/login_screen.dart';
 import 'package:travellers/modules/on_boarding_screen.dart';
@@ -15,7 +16,10 @@ import 'package:travellers/styles/themes.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await RegDataBase.createDatabase();
-
+  await AllTicketsData.createDataBase();
+  AllTicketsData.getBookedTicketData();
+  //AllTicketsData.insertToTicketDatabase(from: "Egypt", to: "Italy", typeID: Icons.airplanemode_active.codePoint, type: Icons.airplanemode_active.fontFamily.toString() , price: 80000 , available: 15, date: "10/5/2023/");
+AllTicketsData.getTicketData();
   runApp(MultiProvider(
     providers:
     [

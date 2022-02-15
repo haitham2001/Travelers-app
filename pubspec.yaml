@@ -45,6 +45,7 @@ dependencies:
   sqflite: ^2.0.2
   fluttertoast: ^8.0.8
   flutter_bloc: ^8.0.1
+  number_inc_dec: ^0.8.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

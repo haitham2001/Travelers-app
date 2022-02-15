@@ -1,4 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:travellers/BookedTickets.dart';
 import 'package:travellers/user_data.dart';
-
+import 'package:travellers/Ticket.dart';
 List<UserData> data = [];
-
+List<Ticket>ticketsData=[];
+List<BookedTickets>bookedTicketsData=[];
+List<Ticket>busTicketsData=[];
+List<Ticket>trainTicketsData=[];
+List<Ticket>planeTicketsData=[];
+String busWay=Icons.directions_bus.fontFamily.toString();
+String trainWay=Icons.train.fontFamily.toString();
+String planeWay=Icons.airplanemode_active.fontFamily.toString();

@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:travellers/BookedTickets.dart';
+import 'package:travellers/TicketDatabase/TicketDataBase.dart';
 
 import 'package:travellers/components/components.dart';
+import 'package:travellers/constants/constants.dart';
+import 'package:travellers/modules/TicketsScreen.dart';
 import 'package:travellers/modules/login_screen.dart';
 import 'package:travellers/modules/pick_destination.dart';
+// import 'package:travellers/modules/pick_destination.dart';
+
 import 'package:travellers/modules/profile_screen.dart';
 import 'package:travellers/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:travellers/styles/colors.dart';
+import 'package:travellers/user_data.dart';
 
+import '../Ticket.dart';
+import 'BookedTicketsScreen.dart';
 import 'cubit/about_us.dart';
 
 class HomeScreen extends StatelessWidget {
+  static bool bus=false;
+  static bool train=false;
+  static bool airplane=false;
+  static List<Ticket> booked=[];
+  static List<int> bookedQuantity=[];
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -104,7 +118,23 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     defaultBtn(
                         txt: 'Your Tickets',
-                        function: () {},
+                        function: () {
+
+                          booked.clear();
+                          bookedQuantity.clear();
+                          for(int i=0;i<bookedTicketsData.length;i++)
+                            {
+                              for(int j=0;j<ticketsData.length;j++)
+                                {
+                                  if(bookedTicketsData[i].ticketId==ticketsData[j].id)
+                                    {
+                                      booked.add(ticketsData[j]);
+                                      bookedQuantity.add(bookedTicketsData[i].quantity);
+                                    }
+                                }
+                            }
+                          navigateTo(context,BookedTicketsScreen());
+                        },
                         icon: Icons.receipt),
                     const SizedBox(
                       height: 45,
@@ -115,6 +145,9 @@ class HomeScreen extends StatelessWidget {
                         txt: 'Plane',
                         function: ()
                         {
+                          airplane=true;
+                          bus=false;
+                          train=false;
                            navigateTo(context,PickDestination());
                         },
                         icon: Icons.airplanemode_active_outlined),
@@ -127,6 +160,9 @@ class HomeScreen extends StatelessWidget {
                         txt: 'Bus',
                         function: ()
                         {
+                          bus=true;
+                          airplane=false;
+                          train=false;
                           navigateTo(context,PickDestination());
                         },
                         icon: Icons.directions_bus),
@@ -138,6 +174,9 @@ class HomeScreen extends StatelessWidget {
                         right_margin_icon: 5,
                         right_margin_text: 105,
                         txt: 'Train', function: () {
+                      train=true;
+                      bus=false;
+                      airplane=false;
                       navigateTo(context,PickDestination());
                     }, icon: Icons.train),
                   ],

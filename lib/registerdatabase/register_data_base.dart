@@ -50,24 +50,32 @@ class RegDataBase {
       for (var element in value) {
         data.add(
           UserData(
+            id: element['id'] as int,
             userName: element['username'] as String,
             Password: element['password'] as String,
             Email: element['email'] as String,
+            DateOfBirth: element['date'] as String,
           )
         );
       }
     }).catchError((error){
       print(error.toString());
     });
+
   }
-  // static void deleteDatabase(){
-  //   database.rawDelete(
-  //       'DELETE userDB'
-  //   ).then((value){
-  //     print(value);
-  //   }).catchError((error){
-  //     print(error.toString());
-  //   });
-  // }
+  static void updateDatabase(String username, String password , int id){
+    database.rawUpdate(
+        'update table userDB set username = ?, password =?  where id = ?',[username,password,id]
+
+    ).
+    then((value){
+      print(value);
+    }).
+    catchError((error){
+      print(error.toString());
+    });
+
+
+  }
 
 }

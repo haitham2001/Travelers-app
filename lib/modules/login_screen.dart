@@ -4,14 +4,12 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:travellers/components/components.dart';
 import 'package:travellers/constants/constants.dart';
-import 'package:travellers/modules/cubit/cubit.dart';
-import 'package:travellers/modules/cubit/states.dart';
-import 'package:travellers/modules/cubit/theme_cubit.dart';
-import 'package:travellers/modules/home_page.dart';
-import 'package:travellers/modules/pick_destination.dart';
+import 'package:travellers/modules/home_screen.dart';
+import 'package:travellers/modules/profile_screen.dart';
 import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/providers/pass_provider.dart';
 import 'package:travellers/providers/theme_provider.dart';
+import 'package:travellers/registerdatabase/register_data_base.dart';
 import 'package:travellers/styles/colors.dart';
 import 'package:travellers/user_data.dart';
 
@@ -26,7 +24,8 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+
+        title: Text(
           'Travellers',
         ),
         actions: [
@@ -42,12 +41,12 @@ class LoginScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/background.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
+        // decoration: const BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage("assets/images/c.jpg"),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -61,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         Text(
                           'LOGIN',
-                          style: Theme.of(context).textTheme.bodyText1,
+                          style: Theme.of(context).textTheme.headline1,
                         ),
                         const SizedBox(
                           height: 7.0,
@@ -117,7 +116,7 @@ class LoginScreen extends StatelessWidget {
                               controller: passwordController,
                               obscureText: myProvider.isPass,
                               decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.all(21),
+                                  contentPadding: const EdgeInsets.all(24),
                                   labelText: 'Password',
                                   labelStyle:
                                       Theme.of(context).textTheme.bodyText2,
@@ -144,33 +143,38 @@ class LoginScreen extends StatelessWidget {
                               }),
                         ),
                         const SizedBox(
-                          height: 20.0,
+                          height: 40.0,
                         ),
-                        defaultBtn(
-                          txt: 'LOGIN',
-                          function: () {
-                            bool success = false;
-                            if (FormKey.currentState!.validate()) {
-                              for (var data in data) {
-                                if (data.Email == emailController.text &&
-                                    data.Password == passwordController.text) {
-                                  success = true;
+                        Center(
+                          child: defaultBtn(
+                            txt: 'LOGIN',
+                            icon: Icons.login_outlined,
+                            function: () {
+                              bool success = false;
+                              if (FormKey.currentState!.validate()) {
+                                for (var data in data) {
+                                  if (data.Email == emailController.text &&
+                                      data.Password == passwordController.text)
+                                  {
+                                    UserData.LoggedUser = data;
+                                    success = true;
+                                  }
+                                }
+
+                                if (success) {
+                                  Fluttertoast.showToast(msg: 'Login Success');
+                                  navigateTo(context, const HomeScreen());
+                                } else {
+                                  Fluttertoast.showToast(
+                                      msg: 'Invalid Email or Password');
                                 }
                               }
-                              if (success) {
-                                Fluttertoast.showToast(msg: 'Login Success');
-                                //Navigator.of(context).push(MaterialPageRoute(builder:(_)=> PickDestination()));
-                                NavigateAndFinish(context, HomePage());
-                              } else {
-                                Fluttertoast.showToast(
-                                    msg: 'Invalid Email or Password');
-                              }
-                            }
-                          },
-                          backgroundcolor: defaultColor,
+                            },
+                            backgroundcolor: defaultColor,
+                          ),
                         ),
                         const SizedBox(
-                          height: 10.0,
+                          height: 15.0,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

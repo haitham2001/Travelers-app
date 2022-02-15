@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:travellers/modules/cubit/cubit.dart';
-import 'package:travellers/modules/cubit/states.dart';
-import 'package:travellers/modules/cubit/theme_cubit.dart';
+import 'package:travellers/modules/home_screen.dart';
 import 'package:travellers/modules/login_screen.dart';
 import 'package:travellers/modules/on_boarding_screen.dart';
+import 'package:travellers/modules/profile_screen.dart';
 import 'package:travellers/modules/register_screen.dart';
+import 'package:travellers/modules/start_screen.dart';
 import 'package:travellers/providers/pass_provider.dart';
 import 'package:travellers/providers/theme_provider.dart';
 import 'package:travellers/registerdatabase/register_data_base.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const LoginScreen(),
+      home: const OnBoardingScreen(),
       theme: LightMode,
       darkTheme: DarkMode,
       themeMode: Provider.of<ThemeProvider>(context).isDark ? ThemeMode.dark : ThemeMode.light,

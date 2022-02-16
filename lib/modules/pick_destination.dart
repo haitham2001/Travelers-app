@@ -15,9 +15,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:travellers/login_screen.dart';
 import 'package:travellers/profile.dart';
 import 'package:travellers/components/components.dart';
-// import 'package:travellers/modules/cubit/cubit.dart';
-// import 'package:travellers/modules/cubit/states.dart';
-// import 'package:travellers/modules/cubit/theme_cubit.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/styles/colors.dart';
 
@@ -61,9 +59,14 @@ class PickDestinationState extends State<PickDestination> {
               ),
             ),
             Theme(
-              data: Theme.of(context).copyWith(dividerColor: Colors.white),
-              child: PopupMenuButton<int>(icon: Icon(Icons.more_vert,color: Colors.white,),
-                color:defaultColor ,itemBuilder: (context)=>[
+              data: Theme.of(context).copyWith(
+                  dividerColor: Colors.white
+              ),
+              child: PopupMenuButton<int>(icon: Icon(
+                Icons.more_vert,
+                color: Colors.white,
+              ),
+                color: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor ,itemBuilder: (context)=>[
                   PopupMenuItem<int>(
                       value: 0,
                       child: Row(
@@ -135,7 +138,7 @@ class PickDestinationState extends State<PickDestination> {
                                   hint: Text("select your place",style: TextStyle(
                                     color: Colors.deepOrange,fontSize: 20
                                   ),),
-                                  dropdownColor: Colors.deepOrange,
+                                  dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor,
                                   iconSize: 30,
                                   value: valueChoose1,
                                   onChanged: (newValue){
@@ -177,7 +180,7 @@ class PickDestinationState extends State<PickDestination> {
                                     hint: Text("select your Destination",style: TextStyle(
                                         color: Colors.deepOrange,fontSize: 20
                                     ),),
-                                    dropdownColor: Colors.deepOrange,
+                                    dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor,
                                     iconSize: 30,
                                     value: valueChoose2,
                                     onChanged: (newValue){

@@ -7,7 +7,7 @@ import 'package:travellers/components/components.dart';
 import 'package:travellers/constants/constants.dart';
 import 'package:travellers/modules/profile_screen.dart';
 import 'package:travellers/providers/theme_provider.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'package:travellers/modules/pick_destination.dart';
 import 'package:travellers/providers/theme_provider.dart';
 import 'package:travellers/styles/colors.dart';
@@ -48,7 +48,7 @@ class TicketsScreen extends StatelessWidget {
               dividerColor: Colors.white,
             ),
             child: PopupMenuButton<int>(
-                color: defaultColor,
+                color: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor,
                 onSelected: (item) => selected(context, item),
                 itemBuilder: (context) => [
                   PopupMenuItem<int>(

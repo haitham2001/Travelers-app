@@ -11,7 +11,7 @@ import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/providers/theme_provider.dart';
 import 'package:travellers/styles/colors.dart';
 import 'login_screen.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 
 class About extends StatelessWidget{
   @override
@@ -33,7 +33,8 @@ class About extends StatelessWidget{
           Theme(
             data: Theme.of(context).copyWith(dividerColor: Colors.white),
             child: PopupMenuButton<int>(icon: Icon(Icons.more_vert,color: Colors.white,),
-              color:defaultColor ,itemBuilder: (context)=>[
+              color: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor,
+              itemBuilder: (context)=>[
                 PopupMenuItem<int>(
                     value: 0,
                     child: Row(

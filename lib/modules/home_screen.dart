@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travellers/BookedTickets.dart';
 import 'package:travellers/TicketDatabase/TicketDataBase.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import 'package:travellers/components/components.dart';
 import 'package:travellers/constants/constants.dart';
 import 'package:travellers/modules/TicketsScreen.dart';
@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
               dividerColor: Colors.white,
             ),
             child: PopupMenuButton<int>(
-                color: defaultColor,
+                color: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor,
                 onSelected: (item) => selected(context, item),
                 itemBuilder: (context) => [
                       PopupMenuItem<int>(

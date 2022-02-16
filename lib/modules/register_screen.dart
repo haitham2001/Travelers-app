@@ -84,7 +84,7 @@ class RegisterScreen extends StatelessWidget {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Enter Your Username';
-                        } else if (value.length < 3) {
+                        } else if (value.length < 4) {
                           return 'Username at least 4 characters';
                         }
                       },

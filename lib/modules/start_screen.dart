@@ -30,61 +30,63 @@ class StartScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Container(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
 
-            margin: const EdgeInsets.only(top: 75),
-            child: const Center(
-              child: CircleAvatar(
-                radius: 80,
-                backgroundColor: defaultColor,
-                child: Icon(
-                  Icons.airplanemode_active_outlined,
-                  color: Colors.white,
-                  size: 135,
+              margin: const EdgeInsets.only(top: 75),
+              child: const Center(
+                child: CircleAvatar(
+                  radius: 80,
+                  backgroundColor: defaultColor,
+                  child: Icon(
+                    Icons.airplanemode_active_outlined,
+                    color: Colors.white,
+                    size: 135,
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 160,
-          ),
-          Container(
-            child: defaultBtn(
-                txt: 'Sign in',
-                icon: Icons.login_outlined,
+            const SizedBox(
+              height: 160,
+            ),
+            Container(
+              child: defaultBtn(
+                  txt: 'Sign in',
+                  icon: Icons.login_outlined,
 
+                  function: () {
+                    navigateTo(context, const LoginScreen());
+                  }),
+            ),
+            const SizedBox(
+              height: 45,
+            ),
+            // CircleAvatar(
+            //   backgroundImage:
+            //     AssetImage('assets/images/waled.png'),
+            //     radius: 50,
+            //
+            // ),
+
+            defaultBtn(
+                txt: 'Sign up',
+                icon: Icons.app_registration_outlined,
                 function: () {
-                  navigateTo(context, const LoginScreen());
+                  navigateTo(context, const RegisterScreen());
                 }),
-          ),
-          const SizedBox(
-            height: 45,
-          ),
-          // CircleAvatar(
-          //   backgroundImage:
-          //     AssetImage('assets/images/waled.png'),
-          //     radius: 50,
-          //
-          // ),
-
-          defaultBtn(
-              txt: 'Sign up',
-              icon: Icons.app_registration_outlined,
-              function: () {
-                navigateTo(context, const RegisterScreen());
-              }),
-          const SizedBox(
-            height: 45,
-          ),
-          defaultBtn(
-              txt: 'About Us',
-              icon: Icons.group_outlined,
-              function: () {
-                navigateTo(context, AboutUsScreen());
-              }),
-        ],
+            const SizedBox(
+              height: 45,
+            ),
+            defaultBtn(
+                txt: 'About Us',
+                icon: Icons.group_outlined,
+                function: () {
+                  navigateTo(context, AboutUsScreen());
+                }),
+          ],
+        ),
       ),
     );
   }

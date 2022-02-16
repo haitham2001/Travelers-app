@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:travellers/TicketDatabase/TicketDataBase.dart';
@@ -10,6 +11,7 @@ import 'package:travellers/modules/admin.dart';
 
 import 'package:travellers/modules/login_screen.dart';
 import 'package:travellers/providers/pass_provider.dart';
+import 'package:travellers/providers/theme_provider.dart';
 import 'package:travellers/registerdatabase/register_data_base.dart';
 import 'package:travellers/styles/colors.dart';
 
@@ -55,13 +57,15 @@ class _AddTripScreenState extends State<AddTripScreen> {
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              // ThemeCubit.get(context).changexMode();
-            },
-            icon: const Icon(Icons.brightness_4_outlined),
-            color: Colors.white,
-          )
+          Consumer<ThemeProvider>(
+            builder: (context, myProv, _) => IconButton(
+              onPressed: () {
+                myProv.changeAppMode();
+              },
+              icon: const Icon(Icons.brightness_4_outlined),
+              color: Colors.white,
+            ),
+          ),
         ],
       ),
       body: Container(
@@ -74,7 +78,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
             Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 'Add Trip',
-                style: Theme.of(context).textTheme.bodyText1,
+                style: Theme.of(context).textTheme.headline1,
               ),
               Padding(
                 padding: const EdgeInsets.all(38.0),
@@ -90,10 +94,9 @@ class _AddTripScreenState extends State<AddTripScreen> {
                         ),
                         child: DropdownButton(
                             isExpanded: true,
-                            hint: Text("select your place",style: TextStyle(
-                                color: Colors.black,fontSize: 18
-                            ),),
-                            dropdownColor: Colors.deepOrange,
+                            hint: Text("select your place",style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                            dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : Colors.white,
                             iconSize: 30,
                             value: fromValueChoose,
                             onChanged: (newValue){
@@ -112,7 +115,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
 
 
                       SizedBox(
-                        height: 7.0,
+                        height: 18.0,
                       ),
                       Container(
                         padding:EdgeInsets.only(left: 10,right: 10),
@@ -122,10 +125,8 @@ class _AddTripScreenState extends State<AddTripScreen> {
                         ),
                         child: DropdownButton(
                             isExpanded: true,
-                            hint: Text("select your Destination",style: TextStyle(
-                                color: Colors.black,fontSize: 18
-                            ),),
-                            dropdownColor: Colors.deepOrange,
+                            hint: Text("select your Destination",style: Theme.of(context).textTheme.bodyText1,),
+                            dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : Colors.white,
                             iconSize: 30,
                             value: toalueChoose,
                             onChanged: (newValue){
@@ -153,10 +154,8 @@ class _AddTripScreenState extends State<AddTripScreen> {
                         ),
                         child: DropdownButton(
                             isExpanded: true,
-                            hint: Text("select your Transport way",style: TextStyle(
-                                color: Colors.black,fontSize: 18
-                            ),),
-                            dropdownColor: Colors.deepOrange,
+                            hint: Text("select your Transport way",style: Theme.of(context).textTheme.bodyText1,),
+                            dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : Colors.white,
                             iconSize: 30,
                             value: tripWayValueChoose,
                             onChanged: (newValue){
@@ -180,7 +179,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
                         keyboardType: TextInputType.number,
                         controller:priceController,
                         decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(1),
+                          contentPadding: const EdgeInsets.all(8),
                           labelText: 'Price',
                           labelStyle: Theme.of(context).textTheme.bodyText2,
                           prefixIcon: const Icon(
@@ -195,7 +194,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
                             child: GestureDetector(
                               child: const Icon(
                                 Icons.clear,
-                                color: Colors.black,
+                                color: Colors.white,
                               ),
 
                               onTap: () {
@@ -217,7 +216,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
                         controller: avaialableController,
                         decoration: InputDecoration(
 
-                          contentPadding: const EdgeInsets.all(1),
+                          contentPadding: const EdgeInsets.all(8),
                           labelText: 'Available Amount',
                           labelStyle: Theme.of(context).textTheme.bodyText2,
                           prefixIcon: const Icon(
@@ -272,8 +271,8 @@ class _AddTripScreenState extends State<AddTripScreen> {
                           showDatePicker(
                             context: context,
                             initialDate: DateTime.now(),
-                            firstDate: DateTime.parse('2022-10-25'),
-                            lastDate: DateTime.parse('2024-10-25'),
+                            firstDate: DateTime.parse('1990-10-25'),
+                            lastDate: DateTime.parse('2022-10-25'),
                           ).then((value) {
                             dateController.text =
                                 DateFormat.yMMMd().format(value!);
@@ -286,6 +285,8 @@ class _AddTripScreenState extends State<AddTripScreen> {
 
                       defaultBtn(
                           txt: 'Add Trip',
+                          icon: Icons.add,
+                          right_margin_text: 35,
                           function: () async {
 
                             if(fromValueChoose==null||toalueChoose==null||tripWayValueChoose==null||priceController.text==""||avaialableController.text==""||dateController.text=="")

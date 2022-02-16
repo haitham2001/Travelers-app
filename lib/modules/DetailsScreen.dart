@@ -115,8 +115,9 @@ static var quantityControler=TextEditingController();
                         ),
                         defaultBtn(
                           right_margin_icon: 10,
-                          right_margin_text: 90,
+                          right_margin_text: 45,
                           txt: "Order",
+                          icon: Icons.bookmark_border,
                           function: () {
                             if(int.parse(quantityControler.text)>0&&int.parse(quantityControler.text)<DetailsData.ticket!.available) {
                               AllTicketsData.insertToBookedTicketDatabase(

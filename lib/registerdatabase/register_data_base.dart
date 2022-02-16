@@ -63,10 +63,9 @@ class RegDataBase {
     });
 
   }
-  static void updateDatabase(String username, String password , int id){
+  static void updateDatabase(String username,String email,String date, String password , int id){
     database.rawUpdate(
-        'update table userDB set username = ?, password =?  where id = ?',[username,password,id]
-
+        'update  userDB set username = ?,email=?,date=?, password =?  where id = ?',[username,email,date,password,id]
     ).
     then((value){
       print(value);
@@ -77,5 +76,6 @@ class RegDataBase {
 
 
   }
+
 
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:travellers/components/components.dart';
 import 'package:travellers/constants/constants.dart';
@@ -196,6 +197,43 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(
                     height: 15,
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 10),
+                    child: CircleAvatar(
+                      radius: 43,
+                      backgroundColor: defaultColor,
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () {
+                          if(usernameController.text!=""&&emailController.text!=""&&passwordController.text!=""&&dateController.text!="")
+                          {
+                            RegDataBase.updateDatabase(usernameController.text, emailController.text,dateController.text , passwordController.text, UserData.LoggedUser.id);
+                            Fluttertoast.showToast(
+                                msg: 'User Updated successfully');
+                            UserData.LoggedUser = UserData(
+                                id: UserData.LoggedUser.id,
+                                userName: usernameController.text,
+                                Email: emailController.text,
+                                Password: passwordController.text,
+                                DateOfBirth: dateController.text);
+                            RegDataBase.getData(RegDataBase.database);
+                          }
+                          else
+                          {
+                            Fluttertoast.showToast(
+                                msg: 'please compleate all data');
+                            RegDataBase.getData(RegDataBase.database);
+                          }
+                          // Update DB ..
+                        },
+                        icon: const Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                      ),
+                    ),
                   ),
 
                 ],

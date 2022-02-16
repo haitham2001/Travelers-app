@@ -1,35 +1,34 @@
-import 'package:flutter/foundation.dart';
+import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
-import 'package:travellers/TicketDatabase/TicketDataBase.dart';
-//import 'package:travellers/code/theme_provider.dart';
-import 'package:travellers/components/components.dart';
 import 'package:travellers/constants/constants.dart';
+import 'package:travellers/modules/AddTripScreen.dart';
+import 'package:travellers/modules/DetailsData.dart';
+import 'package:travellers/modules/TicketsScreen.dart';
 import 'package:travellers/modules/profile_screen.dart';
 import 'package:travellers/providers/theme_provider.dart';
+import 'package:page_transition/page_transition.dart';
 
-import 'package:travellers/modules/pick_destination.dart';
-import 'package:travellers/providers/theme_provider.dart';
+import 'package:travellers/components/components.dart';
+
+import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/styles/colors.dart';
 
-import '../Ticket.dart';
-import 'DetailsData.dart';
-import 'DetailsScreen.dart';
 import 'about_us.dart';
 import 'login_screen.dart';
 
-class TicketsScreen extends StatelessWidget {
-
-  const TicketsScreen({Key? key}) : super(key: key);
 
 
+class Admin extends StatelessWidget {
+  const Admin({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Tickets",
+          "Admin",
         ),
         actions: [
           Consumer<ThemeProvider>(
@@ -91,43 +90,58 @@ class TicketsScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: DetailsData.tickets.length,
-          itemBuilder: (context, index) {
-            return Card(
-
-              child: ListTile(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.5)
-                ),
-
-                onTap: (){
-                  DetailsData.ticket=DetailsData.tickets[index];
-                  DetailsData.quantity=DetailsData.ticket!.available;
-                  navigateTo(context, DetailsScreen());
-                },
-                title: Text("From:- "+DetailsData.tickets[index].from,style:TextStyle (color: Colors.white),),
-                minVerticalPadding: 30,
-                subtitle: Text("To:- "+DetailsData.tickets[index].to,style:TextStyle (color: Colors.white),),
-                tileColor: Colors.deepOrange,
-                leading: Icon( IconData(DetailsData.tickets[index].typeId, fontFamily: DetailsData.tickets[index].type,),size: 59,),
-
+          body: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [Padding(
+                  padding: const EdgeInsets.all(26.0),
+                  child: Column(
+                    children: [
+                      Text("Welcome",
+                      style: Theme.of(context).textTheme.bodyText1),
+                      SizedBox(height:15),
+                      Icon(Icons.admin_panel_settings,size: 200,color: defaultColor,),
+                      SizedBox(height:15),
+                      ElevatedButton(onPressed: (){
+                        navigateTo(context, AddTripScreen());
+                      },
+                          child: Row(
+                          children: [
+                            Icon(Icons.add_circle,size: 52,),
+                            SizedBox(width:7.0),
+                            Text("Add Trip"
+                              ,style: TextStyle(fontSize: 30),)
+                          ],
+                      )
+                      ),
+                      SizedBox(height:15),
+                      ElevatedButton(onPressed: (){
+                        DetailsData.tickets=ticketsData;
+                        navigateTo(context, TicketsScreen());
+                      },
+                          child: Row(
+                            children: [
+                              Icon(Icons.list_alt,size: 52,),
+                              SizedBox(width:7.0),
+                              Text("Show All Trips"
+                              ,style: TextStyle(fontSize: 30),)
+                            ],
+                          )
+                      ),SizedBox(height:15),
+                    ],
+                  ),
+                ),]
               ),
+            ),
+          ),
 
-            );
-          }
-
-        ),
-      ),
     );
   }
   void selected(BuildContext context, int selected_item) {
     switch (selected_item) {
       case 0:
       //Will go to Profile page
-        navigateTo(context, ProfileScreen());
+        //navigateTo(context, ProfileScreen());
         break;
       case 1:
       //Will go to The History Page
@@ -139,5 +153,8 @@ class TicketsScreen extends StatelessWidget {
         break;
     }
   }
-
 }
+
+
+
+

@@ -10,7 +10,7 @@ import 'package:travellers/modules/profile_screen.dart';
 import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/providers/theme_provider.dart';
 import 'package:travellers/styles/colors.dart';
-import '../login_screen.dart';
+import 'login_screen.dart';
 
 
 class About extends StatelessWidget{

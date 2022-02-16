@@ -91,7 +91,7 @@ static var quantityControler=TextEditingController();
                           style: TextStyle(color: Colors.deepOrange,fontSize: 25),
                         ),
                         Text(
-                          ":->"+DetailsData.ticket!.available.toString(),
+                          ":->"+DetailsData.quantity  .toString(),
                           style: TextStyle(color: Colors.deepOrange,fontSize: 32),
                         ),
                       ],
@@ -117,14 +117,14 @@ static var quantityControler=TextEditingController();
                           right_margin_text: 90,
                           txt: "Order",
                           function: () {
-                            int x=UserData.LoggedUser.id;
-                            if(int.parse(quantityControler.text)>0) {
+                            if(int.parse(quantityControler.text)>0&&int.parse(quantityControler.text)<DetailsData.ticket!.available) {
                               AllTicketsData.insertToBookedTicketDatabase(
-                                  userId: x,
+                                  userId: UserData.LoggedUser.id,
                                   ticketID: DetailsData.ticket!.id,
                                   quantity: int.parse(quantityControler.text));
+                              AllTicketsData.updateBookedDatabase(DetailsData.ticket!.from,DetailsData.ticket!.to,DetailsData.ticket!.typeId,DetailsData.ticket!.type,DetailsData.ticket!.price,(DetailsData.ticket!.available-int.parse(DetailsScreen.quantityControler.text)),DetailsData.ticket!.date, DetailsData.ticket!.id);
                               Fluttertoast.showToast(
-                                  msg: 'Trip Booked Successfully');
+                                  msg: 'Trip Booked Successfully  '+UserData.LoggedUser.id.toString());
                               NavigateAndFinish(context, const Receipt());
                               bookedTicketsData.clear();
                               AllTicketsData.getBookedTicketData();
@@ -149,4 +149,6 @@ static var quantityControler=TextEditingController();
 
     );
   }
+
+
 }

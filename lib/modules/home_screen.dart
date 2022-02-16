@@ -17,7 +17,7 @@ import 'package:travellers/user_data.dart';
 
 import '../Ticket.dart';
 import 'BookedTicketsScreen.dart';
-import 'cubit/about_us.dart';
+import 'about_us.dart';
 
 class HomeScreen extends StatelessWidget {
   static bool bus=false;
@@ -126,10 +126,10 @@ class HomeScreen extends StatelessWidget {
                             {
                               for(int j=0;j<ticketsData.length;j++)
                                 {
-                                  if(bookedTicketsData[i].ticketId==ticketsData[j].id)
+                                  if(bookedTicketsData[i].userId==UserData.LoggedUser.id && bookedTicketsData[i].ticketId==ticketsData[j].id)
                                     {
                                       booked.add(ticketsData[j]);
-                                      bookedQuantity.add(bookedTicketsData[i].quantity);
+                                      bookedQuantity.add(bookedTicketsData[i].quantity) ;
                                     }
                                 }
                             }

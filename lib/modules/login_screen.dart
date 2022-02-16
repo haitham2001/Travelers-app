@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:travellers/components/components.dart';
 import 'package:travellers/constants/constants.dart';
+import 'package:travellers/modules/admin.dart';
 import 'package:travellers/modules/home_screen.dart';
 import 'package:travellers/modules/profile_screen.dart';
 import 'package:travellers/modules/register_screen.dart';
@@ -20,7 +21,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var FormKey = GlobalKey<FormState>();
     var emailController = TextEditingController();
-    var passwordController = TextEditingController();
+    var passwordController = TextEditingController  ();
 
     return Scaffold(
       appBar: AppBar(
@@ -150,23 +151,34 @@ class LoginScreen extends StatelessWidget {
                             txt: 'LOGIN',
                             icon: Icons.login_outlined,
                             function: () {
-                              bool success = false;
-                              if (FormKey.currentState!.validate()) {
-                                for (var data in data) {
-                                  if (data.Email == emailController.text &&
-                                      data.Password == passwordController.text)
-                                  {
-                                    UserData.LoggedUser = data;
-                                    success = true;
-                                  }
+                              if(emailController.text=="Admin"&&passwordController.text=="Admin")
+                                {
+                                  NavigateAndFinish(
+                                      context, const Admin());
                                 }
+                              else {
+                                bool success = false;
+                                if (FormKey.currentState!.validate()) {
+                                  for (var data in data) {
+                                    if (data.Email == emailController.text &&
+                                        data.Password ==
+                                            passwordController.text) {
+                                      UserData.LoggedUser = data;
+                                      print(UserData.LoggedUser.id);
+                                      success = true;
+                                    }
+                                  }
 
-                                if (success) {
-                                  Fluttertoast.showToast(msg: 'Login Success');
-                                  NavigateAndFinish(context, const HomeScreen());
-                                } else {
-                                  Fluttertoast.showToast(
-                                      msg: 'Invalid Email or Password');
+                                  if (success) {
+                                    Fluttertoast.showToast(
+                                        msg: 'Login Success' +
+                                            UserData.LoggedUser.id.toString());
+                                    NavigateAndFinish(
+                                        context, const HomeScreen());
+                                  } else {
+                                    Fluttertoast.showToast(
+                                        msg: 'Invalid Email or Password');
+                                  }
                                 }
                               }
                             },

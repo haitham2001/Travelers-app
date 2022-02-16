@@ -5,6 +5,7 @@ import 'package:travellers/TicketDatabase/TicketDataBase.dart';
 //import 'package:travellers/code/theme_provider.dart';
 import 'package:travellers/components/components.dart';
 import 'package:travellers/constants/constants.dart';
+import 'package:travellers/modules/BookedDetailsScreen.dart';
 import 'package:travellers/modules/home_screen.dart';
 import 'package:travellers/modules/profile_screen.dart';
 import 'package:travellers/providers/theme_provider.dart';
@@ -16,7 +17,7 @@ import 'package:travellers/styles/colors.dart';
 import '../Ticket.dart';
 import 'DetailsData.dart';
 import 'DetailsScreen.dart';
-import 'cubit/about_us.dart';
+import 'about_us.dart';
 import 'login_screen.dart';
 
 class BookedTicketsScreen extends StatelessWidget {
@@ -109,7 +110,7 @@ class BookedTicketsScreen extends StatelessWidget {
                   onTap: (){
                     DetailsData.ticket=bookedTickets[index];
                     DetailsData.quantity= HomeScreen.bookedQuantity[index];
-                    navigateTo(context, DetailsScreen());
+                    navigateTo(context, BookedDetailsScreen());
                   },
                   title: Text("From:- "+bookedTickets[index].from,style:TextStyle (color: Colors.white),),
                   minVerticalPadding: 30,

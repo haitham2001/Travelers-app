@@ -136,9 +136,9 @@ class PickDestinationState extends State<PickDestination> {
                                 child: DropdownButton(
                                   isExpanded: true,
                                   hint: Text("select your place",style: TextStyle(
-                                    color: Colors.deepOrange,fontSize: 20
+                                    color: defaultColor,fontSize: 20
                                   ),),
-                                  dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor,
+                                  dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : Colors.white,
                                   iconSize: 30,
                                   value: valueChoose1,
                                   onChanged: (newValue){
@@ -180,7 +180,7 @@ class PickDestinationState extends State<PickDestination> {
                                     hint: Text("select your Destination",style: TextStyle(
                                         color: Colors.deepOrange,fontSize: 20
                                     ),),
-                                    dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor,
+                                    dropdownColor: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : Colors.white,
                                     iconSize: 30,
                                     value: valueChoose2,
                                     onChanged: (newValue){
@@ -198,12 +198,13 @@ class PickDestinationState extends State<PickDestination> {
                                 ),
                               ),
                               SizedBox(
-                                height: 23.0,
+                                height: 33.0,
                               ),
                               defaultBtn(
                                 right_margin_icon: 10,
                                 right_margin_text: 50,
                                 txt: 'Find My Trip',
+                                icon: Icons.find_in_page,
                                 function: () {
                                   if(valueChoose1==null || valueChoose2==null)
                                     {
@@ -249,11 +250,12 @@ class PickDestinationState extends State<PickDestination> {
     },
                               ),
                               SizedBox(
-                                height: 10.0,
+                                height: 30.0,
                               ),
                               defaultBtn(
                                 right_margin_icon: 0,
                                 right_margin_text: 10,
+                                icon: Icons.find_in_page_outlined,
                                 txt: 'Show All Trips',
                                 function: () {
                                   current.clear();
@@ -309,7 +311,7 @@ class PickDestinationState extends State<PickDestination> {
         navigateTo(context, ProfileScreen());
         break;
       case 1:
-        navigateTo(context,About());
+        navigateTo(context,AboutUsScreen());
         break;
       case 2:
         NavigateAndFinish(context, LoginScreen());

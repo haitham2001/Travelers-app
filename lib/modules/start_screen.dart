@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travellers/components/components.dart';
+import 'package:travellers/modules/about_us.dart';
 import 'package:travellers/modules/login_screen.dart';
 import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/providers/theme_provider.dart';
@@ -81,7 +82,7 @@ class StartScreen extends StatelessWidget {
               txt: 'About Us',
               icon: Icons.group_outlined,
               function: () {
-                navigateTo(context, const LoginScreen());
+                navigateTo(context, AboutUsScreen());
               }),
         ],
       ),

@@ -105,6 +105,7 @@ static var quantityControler=TextEditingController();
                           padding: const EdgeInsets.all(30.0),
                           child: NumberInputPrefabbed.roundedEdgeButtons(
                             controller: quantityControler,
+                            initialValue: 1,
                             scaleWidth: 1,
                             min: 0,
                             //max: Number of available tickets from database,

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:travellers/components/components.dart';
 import 'package:travellers/modules/login_screen.dart';
+import 'package:travellers/modules/start_screen.dart';
 import 'package:travellers/providers/theme_provider.dart';
 import 'package:travellers/styles/colors.dart';
 
@@ -49,7 +50,7 @@ class OnBoardingScreen extends StatelessWidget {
               onPressed: () {
                 NavigateAndFinish(
                   context,
-                  LoginScreen(),
+                  StartScreen(),
                 );
               },
               child: const Text(
@@ -105,7 +106,7 @@ class OnBoardingScreen extends StatelessWidget {
                     if (isLast) {
                       NavigateAndFinish(
                         context,
-                        LoginScreen(),
+                        StartScreen(),
                       );
                     } else {
                       BoardController.nextPage(

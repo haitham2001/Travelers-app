@@ -66,7 +66,7 @@ Widget defaultBtn({
   double left_margin_icon=10,
   double right_margin_icon=10,
   double right_margin_text=20,
-  double width = 500,
+  double width = 330,
   Color backgroundcolor = defaultColor,
   bool isUpperCase = true,
   double BorderRadValue = 31,

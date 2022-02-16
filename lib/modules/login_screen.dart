@@ -164,15 +164,13 @@ class LoginScreen extends StatelessWidget {
                                         data.Password ==
                                             passwordController.text) {
                                       UserData.LoggedUser = data;
-                                      print(UserData.LoggedUser.id);
                                       success = true;
                                     }
                                   }
 
                                   if (success) {
                                     Fluttertoast.showToast(
-                                        msg: 'Login Success' +
-                                            UserData.LoggedUser.id.toString());
+                                        msg: 'Login Success');
                                     NavigateAndFinish(
                                         context, const HomeScreen());
                                   } else {

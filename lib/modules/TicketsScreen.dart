@@ -131,7 +131,7 @@ class TicketsScreen extends StatelessWidget {
         break;
       case 1:
       //Will go to The History Page
-        navigateTo(context, About()); //Only for testing
+        navigateTo(context, AboutUsScreen()); //Only for testing
         break;
       case 2:
       //Return to login page and delete the stack of pages

@@ -99,30 +99,13 @@ class Receipt extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20,),
-            Container(
-              padding: EdgeInsets.fromLTRB(
-                110,
-                0,
-                110,
-                0
-              ),
-              decoration: BoxDecoration(
-                color: Colors.deepOrange,
-                borderRadius: BorderRadius.circular(31),
-              ),
-              child: TextButton(
-                onPressed:(){
-                  NavigateAndFinish(context, HomeScreen());
-                },
-                child: Text(
-                  "HOME",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
+            defaultBtn(
+              right_margin_text: 45,
+              icon: Icons.home,
+                txt: 'Home',
+                function: (){
+              NavigateAndFinish(context, HomeScreen());
+                }),
           ],
         ),
       ),

@@ -13,7 +13,7 @@ import 'package:travellers/styles/colors.dart';
 import 'login_screen.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class About extends StatelessWidget{
+class AboutUsScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,44 +30,7 @@ class About extends StatelessWidget{
               color: Colors.white,
             ),
           ),
-          Theme(
-            data: Theme.of(context).copyWith(dividerColor: Colors.white),
-            child: PopupMenuButton<int>(icon: Icon(Icons.more_vert,color: Colors.white,),
-              color: Provider.of<ThemeProvider>(context).isDark ? HexColor('333739') : defaultColor,
-              itemBuilder: (context)=>[
-                PopupMenuItem<int>(
-                    value: 0,
-                    child: Row(
-                      children: [
-                        Icon(Icons.home, color: Colors.white),
-                        Text("Home",style:
-                        TextStyle(color: Colors.white)),
-                      ],
-                    )
-                ),
-                PopupMenuItem<int>(
-                    value: 1,
-                    child: Row(
-                      children: [
-                        Icon(Icons.person, color: Colors.white),
-                        Text("Profile",style:
-                        TextStyle(color: Colors.white)),
-                      ],
-                    )
-                ),
-                PopupMenuDivider(),
-                PopupMenuItem<int>(
-                    value: 2,
-                    child: Row(
-                      children: [
-                        Icon(Icons.logout,color: Colors.white,),
-                        const SizedBox(width: 7,),
-                        Text('Logout',style: TextStyle(color: Colors.white),)
-                      ],
-                    )
-                )
-              ],onSelected: (item)=>SelectedItem(context,item),),
-          )
+
         ],
       ),
       body: SingleChildScrollView(
@@ -176,17 +139,5 @@ class About extends StatelessWidget{
       ),
     );
   }
-  SelectedItem(BuildContext context, item) {
-    switch(item){
-      case 0:
-        navigateTo((context), HomeScreen());
-        break;
-      case 1:
-        navigateTo((context),ProfileScreen());
-        break;
-      case 2:
-        NavigateAndFinish(context, LoginScreen());
-        break;
-    }
-  }
+
 }

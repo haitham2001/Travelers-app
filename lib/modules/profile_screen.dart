@@ -136,7 +136,7 @@ class ProfileScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 75),
+                        margin: EdgeInsets.only(left: 65),
                         width: 230,
                         height: 65,
                         child: TextFormField(

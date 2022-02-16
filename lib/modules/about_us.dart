@@ -93,12 +93,11 @@ class About extends StatelessWidget{
                     ),SizedBox(height: 7,),
                 Row(
                     children: [
-                // CircleAvatar(
-                //   backgroundImage: AssetImage(
-                //     "assets/images/background.jpg",
-                //   ),radius: 25,
-                // )
-                      Icon(Icons.developer_mode,color: defaultColor,),
+                CircleAvatar(
+                  backgroundImage: AssetImage(
+                    "assets/images/hadi.png",
+                  ),radius: 25,
+                ),
                     SizedBox(width:7),
                       Text("Hadi Ehab",style: TextStyle(fontSize: 18,color: defaultColor,fontWeight: FontWeight.bold),)
                     ]
@@ -106,7 +105,11 @@ class About extends StatelessWidget{
                 SizedBox(height:9),
                 Row(
                   children: [
-                  Icon(Icons.developer_mode,color: defaultColor),
+                    CircleAvatar(
+                      backgroundImage: AssetImage(
+                        "assets/images/atef.png",
+                      ),radius: 25,
+                    ),
                 SizedBox(width:7),
                 Text("Hadi Atef",style: TextStyle(fontSize: 18,color: defaultColor,fontWeight: FontWeight.bold)),
                     ]
@@ -114,12 +117,12 @@ class About extends StatelessWidget{
                 SizedBox(height:9),
                 Row(
                   children: [
-                    // CircleAvatar(
-                    //   backgroundImage: AssetImage(
-                    //     "assets/images/waleed.png",
-                    //   ),radius: 25,
-                    // ),
-                    Icon(Icons.developer_mode,color: defaultColor,),
+                    CircleAvatar(
+                      backgroundImage: AssetImage(
+                        "assets/images/waleed.png",
+                      ),radius: 25,
+                    ),
+
                 SizedBox(width:7),
                 Text("Waleed Mohamed",style: TextStyle(fontSize: 18,color: defaultColor,fontWeight: FontWeight.bold)),
                     ]
@@ -127,7 +130,11 @@ class About extends StatelessWidget{
                 SizedBox(height:9),
                 Row(
                   children: [
-                  Icon(Icons.developer_mode,color: defaultColor,),
+                    CircleAvatar(
+                      backgroundImage: AssetImage(
+                        "assets/images/mazen.png",
+                      ),radius: 25,
+                    ),
                 SizedBox(width:7),
                 Text("Mazen Mohamed",style: TextStyle(fontSize: 18,color: defaultColor,fontWeight: FontWeight.bold))
                     ]
@@ -135,7 +142,11 @@ class About extends StatelessWidget{
                 SizedBox(height:9),
                 Row(
                   children: [
-                  Icon(Icons.developer_mode,color: defaultColor,),
+                    CircleAvatar(
+                      backgroundImage: AssetImage(
+                        "assets/images/haytham.png",
+                      ),radius: 25,
+                    ),
                 SizedBox(width:7),
                 Text("Haitham Mahmoud",style: TextStyle(fontSize: 18,color: defaultColor,fontWeight: FontWeight.bold)),
                     ]
@@ -143,7 +154,11 @@ class About extends StatelessWidget{
                 SizedBox(height:9),
                 Row(
                   children: [
-                    Icon(Icons.developer_mode,color: defaultColor,),
+                    CircleAvatar(
+                      backgroundImage: AssetImage(
+                        "assets/images/sabry.png",
+                      ),radius: 25,
+                    ),
                     SizedBox(width:7),
                     Text("Muhammad Sabry",style: TextStyle(fontSize: 18,color: defaultColor,fontWeight: FontWeight.bold)),
                         ]

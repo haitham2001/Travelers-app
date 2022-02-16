@@ -22,6 +22,7 @@ import 'package:travellers/modules/register_screen.dart';
 import 'package:travellers/styles/colors.dart';
 
 import 'DetailsData.dart';
+import 'about_us.dart';
 
 
 class PickDestination extends StatefulWidget {
@@ -198,13 +199,13 @@ class PickDestinationState extends State<PickDestination> {
                               ),
                               defaultBtn(
                                 right_margin_icon: 10,
-                                right_margin_text: 80,
+                                right_margin_text: 50,
                                 txt: 'Find My Trip',
                                 function: () {
                                   if(valueChoose1==null || valueChoose2==null)
                                     {
                                       Fluttertoast.showToast(
-                                          msg: 'please choose your palce and destination');
+                                          msg: 'please choose your place and destination');
                                     }
                                   else
                                     {
@@ -249,7 +250,7 @@ class PickDestinationState extends State<PickDestination> {
                               ),
                               defaultBtn(
                                 right_margin_icon: 0,
-                                right_margin_text: 40,
+                                right_margin_text: 10,
                                 txt: 'Show All Trips',
                                 function: () {
                                   current.clear();
@@ -305,7 +306,7 @@ class PickDestinationState extends State<PickDestination> {
         navigateTo(context, ProfileScreen());
         break;
       case 1:
-        //navigateTo(context);
+        navigateTo(context,About());
         break;
       case 2:
         NavigateAndFinish(context, LoginScreen());

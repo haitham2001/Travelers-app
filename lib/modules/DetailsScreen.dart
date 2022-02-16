@@ -127,7 +127,9 @@ static var quantityControler=TextEditingController();
                                   msg: 'Trip Booked Successfully  '+UserData.LoggedUser.id.toString());
                               NavigateAndFinish(context, const Receipt());
                               bookedTicketsData.clear();
+                              ticketsData.clear();
                               AllTicketsData.getBookedTicketData();
+                              AllTicketsData.getTicketData();
                               //Will Take you to Reciept
                             }
                             else

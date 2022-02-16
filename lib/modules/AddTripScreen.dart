@@ -251,7 +251,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
                       TextFormField(
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.all(20),
-                          labelText: 'Date Of Birth',
+                          labelText: 'Date Of Trip',
                           labelStyle: Theme.of(context).textTheme.bodyText2,
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15)),

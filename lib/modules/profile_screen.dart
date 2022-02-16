@@ -197,24 +197,7 @@ class ProfileScreen extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: CircleAvatar(
-                      radius: 43,
-                      backgroundColor: defaultColor,
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () {
-                          // Update DB ..
-                        },
-                        icon: const Icon(
-                          Icons.edit,
-                          color: Colors.white,
-                          size: 50,
-                        ),
-                      ),
-                    ),
-                  ),
+
                 ],
               ),
             ),

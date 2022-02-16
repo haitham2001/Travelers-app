@@ -218,7 +218,7 @@ class _AddTripScreenState extends State<AddTripScreen> {
                         decoration: InputDecoration(
 
                           contentPadding: const EdgeInsets.all(1),
-                          labelText: 'Available',
+                          labelText: 'Available Amount',
                           labelStyle: Theme.of(context).textTheme.bodyText2,
                           prefixIcon: const Icon(
                             Icons.airplanemode_active_rounded,
